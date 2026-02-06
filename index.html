@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Devu ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at top, #ffb6c1, #ff5f7e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.96);
+      padding: 25px;
+      border-radius: 24px;
+      text-align: center;
+      width: 340px;
+      box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+      animation: pop 1s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .photo {
+      width: 100%;
+      border-radius: 18px;
+      margin-bottom: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #ff2e63;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #444;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 16px;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #ff2e63;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 22px;
+      animation: float 4s linear infinite;
+      color: #ff2e63;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh); opacity: 1; }
+      to { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    .hint {
+      font-size: 12px;
+      color: #888;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🎶 Arijit Singh song -->
+  <audio id="song" loop>
+    <source src="https://pagalsong.in/uploads/systemuploads/mp3/Aashiqui%202/Tum%20Hi%20Ho%20-%20Aashiqui%202%20128%20Kbps.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card" id="card">
+    <!-- 📸 Her Photo -->
+    <img src="devu.jpg" alt="Devu ❤️" class="photo">
+
+    <h1>Hey Devu 💖</h1>
+    <p>
+      I know today feels a little heavy…  
+      so here’s something made only for you 🌹  
+      <br><br>
+      You are my calm. My happy place.
+    </p>
+
+    <button onclick="nextMessage()">Tap here 💕</button>
+    <div class="hint">(Tap once to start music 🎶)</div>
+  </div>
+
+  <script>
+    const song = document.getElementById("song");
+
+    const messages = [
+      {
+        title: "Devu 🌸",
+        text: "Even on your off days, you’re still the most beautiful part of my world ❤️"
+      },
+      {
+        title: "This song 🎶",
+        text: "Every line feels like it was written for you… and for us 💞"
+      },
+      {
+        title: "Valentine promise 💌",
+        text: "No matter what you’re feeling — you’re never alone. I’m right here 🤍"
+      }
+    ];
+
+    let index = 0;
+
+    function nextMessage() {
+      song.play().catch(()=>{});
+      if (index < messages.length) {
+        document.getElementById("card").innerHTML = `
+          <h1>${messages[index].title}</h1>
+          <p>${messages[index].text}</p>
+          <button onclick="nextMessage()">Next ❤️</button>
+        `;
+        index++;
+        createHearts();
+      } else {
+        document.getElementById("card").innerHTML = `
+          <h1>Happy Valentine, Devu 💖</h1>
+          <p>
+            If this made you smile even a little…  
+            that means everything to me 🫶  
+            <br><br>
+            I love you 🌹  
+            <br><br>
+            – Yours, idiot 😌
+          </p>
+        `;
+        createHearts(true);
+      }
+    }
+
+    function createHearts(many = false) {
+      const count = many ? 30 : 10;
+      for (let i = 0; i < count; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+  </script>
+
+</body>
+</html>
