@@ -70,6 +70,110 @@
       from { transform: translateY(100vh); opacity: 1; }
       to { transform: translateY(-10vh); opacity: 0; }
     }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card">
+    <!-- 📸 PHOTO -->
+    <img src="devu.jpg" alt="Devu ❤️" class="photo">
+
+    <h1>Hey Devu ❤️</h1>
+    <p>
+      I know today feels a little heavy…  
+      so I made this just for you 🌹  
+      <br><br>
+      You mean the world to me.
+    </p>
+
+    <button onclick="nextMessage()">Tap here 💕</button>
+  </div>
+
+  <script>
+    const messages = [
+      { title: "Devu 🌸", text: "Even on your off days, you’re still my favorite person ❤️" },
+      { title: "Valentine vibes 💌", text: "Every little moment with you makes my heart happy 💞" },
+      { title: "Promise 🤍", text: "No matter what you’re feeling — I’m here. Always 🌹" }
+    ];
+
+    let index = 0;
+
+    function nextMessage() {
+      if (index < messages.length) {
+        document.getElementById("card").innerHTML = `
+          <h1>${messages[index].title}</h1>
+          <p>${messages[index].text}</p>
+          <button onclick="nextMessage()">Next ❤️</button>
+        `;
+        index++;
+        createHearts();
+      } else {
+        document.getElementById("card").innerHTML = `
+          <h1>Happy Valentine, Devu 💖</h1>
+          <p>
+            If this made you smile even a little…  
+            that’s all I wanted 🫶  
+            <br><br>
+            I love you 🌹  
+            <br><br>
+            – Yours, idiot 😌
+          </p>
+        `;
+        createHearts(true);
+      }
+    }
+
+    function createHearts(many = false) {
+      const count = many ? 30 : 10;
+      for (let i = 0; i < count; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+  </script>
+
+</body>
+</html>      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #ff2e63;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #444;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #ff2e63;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 22px;
+      animation: float 4s linear infinite;
+      color: #ff2e63;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh); opacity: 1; }
+      to { transform: translateY(-10vh); opacity: 0; }
+    }
 
     .hint {
       font-size: 12px;
@@ -159,3 +263,4 @@
 
 </body>
 </html>
+
