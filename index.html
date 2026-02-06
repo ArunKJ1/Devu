@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>For Devu ❤️</title>
-
   <style>
     body {
       margin: 0;
@@ -81,9 +80,9 @@
 </head>
 <body>
 
-  <!-- 🎶 Arijit Singh Song -->
+  <!-- 🎶 Local Music -->
   <audio id="song" loop>
-    <source src="https://pagalsong.in/uploads/systemuploads/mp3/Aashiqui%202/Tum%20Hi%20Ho%20-%20Aashiqui%202%20128%20Kbps.mp3" type="audio/mpeg">
+    <source src="tumhiho.mp3" type="audio/mpeg">
   </audio>
 
   <div class="card" id="card">
@@ -95,12 +94,11 @@
       I know today feels a little heavy…  
       so I made this just for you 🌹  
       <br><br>
-      You mean more to me than you know.
+      You mean the world to me.
     </p>
 
     <button onclick="playMusic()">Play Music 🎶</button>
     <button onclick="nextMessage()">Tap here 💕</button>
-
     <div class="hint">(Use earphones for best feel 🎧)</div>
   </div>
 
@@ -108,18 +106,9 @@
     const song = document.getElementById("song");
 
     const messages = [
-      {
-        title: "Devu 🌸",
-        text: "Even on your worst days, you’re still my favorite person ❤️"
-      },
-      {
-        title: "This song 🎶",
-        text: "Every word reminds me of you… every beat feels like us 💞"
-      },
-      {
-        title: "Valentine promise 💌",
-        text: "No matter what you’re feeling — I’m here. Always 🤍"
-      }
+      { title: "Devu 🌸", text: "Even on your off days, you’re still my favorite person ❤️" },
+      { title: "This song 🎶", text: "Every line reminds me of you… every beat feels like us 💞" },
+      { title: "Valentine promise 💌", text: "No matter what you’re feeling — I’m here. Always 🤍" }
     ];
 
     let index = 0;
@@ -169,98 +158,4 @@
   </script>
 
 </body>
-</html>    }
-
-    .hint {
-      font-size: 12px;
-      color: #888;
-      margin-top: 8px;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 🎶 Arijit Singh song -->
-  <audio id="song" loop>
-    <source src="https://pagalsong.in/uploads/systemuploads/mp3/Aashiqui%202/Tum%20Hi%20Ho%20-%20Aashiqui%202%20128%20Kbps.mp3" type="audio/mpeg">
-  </audio>
-
-  <div class="card" id="card">
-    <!-- 📸 Her Photo -->
-    <img src="devu.jpg" alt="Devu ❤️" class="photo">
-
-    <h1>Hey Devu 💖</h1>
-    <p>
-      I know today feels a little heavy…  
-      so here’s something made only for you 🌹  
-      <br><br>
-      You are my calm. My happy place.
-    </p>
-
-    <button onclick="nextMessage()">Tap here 💕</button>
-    <div class="hint">(Tap once to start music 🎶)</div>
-  </div>
-
-  <script>
-    const song = document.getElementById("song");
-
-    const messages = [
-      {
-        title: "Devu 🌸",
-        text: "Even on your off days, you’re still the most beautiful part of my world ❤️"
-      },
-      {
-        title: "This song 🎶",
-        text: "Every line feels like it was written for you… and for us 💞"
-      },
-      {
-        title: "Valentine promise 💌",
-        text: "No matter what you’re feeling — you’re never alone. I’m right here 🤍"
-      }
-    ];
-
-    let index = 0;
-
-    function nextMessage() {
-      song.play().catch(()=>{});
-      if (index < messages.length) {
-        document.getElementById("card").innerHTML = `
-          <h1>${messages[index].title}</h1>
-          <p>${messages[index].text}</p>
-          <button onclick="nextMessage()">Next ❤️</button>
-        `;
-        index++;
-        createHearts();
-      } else {
-        document.getElementById("card").innerHTML = `
-          <h1>Happy Valentine, Devu 💖</h1>
-          <p>
-            If this made you smile even a little…  
-            that means everything to me 🫶  
-            <br><br>
-            I love you 🌹  
-            <br><br>
-            – Yours, idiot 😌
-          </p>
-        `;
-        createHearts(true);
-      }
-    }
-
-    function createHearts(many = false) {
-      const count = many ? 30 : 10;
-      for (let i = 0; i < count; i++) {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 6000);
-      }
-    }
-  </script>
-
-</body>
-
 </html>
